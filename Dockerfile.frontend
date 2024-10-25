@@ -1,0 +1,15 @@
+
+# Nginx web server
+FROM nginx:latest
+
+# Copy Nginx configuration
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy static assets
+COPY assets/ /usr/share/nginx/html/assets/
+COPY index.html /usr/share/nginx/html/index.html
+
+EXPOSE 5173
+
+# Run Java application and Nginx
+CMD ["nginx", "-g", "daemon off;"]
